@@ -40,7 +40,10 @@
         methods: {
             getItem()
             {
-                let uri = 'http://localhost:8080/items/${this.$route.params.id}/edit';
+                let uri = `http://localhost:8080/items/${this.$route.params.id}/edit`;
+
+                console.log(uri);
+
                 this.axios.get(uri).then((response) => {
                     this.item = response.data;
                 });

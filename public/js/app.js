@@ -16249,7 +16249,10 @@ function normalizeComponent (
         getItem: function getItem() {
             var _this = this;
 
-            var uri = 'http://localhost:8080/items/${this.$route.params.id}/edit';
+            var uri = 'http://localhost:8080/items/' + this.$route.params.id + '/edit';
+
+            console.log(uri);
+
             this.axios.get(uri).then(function (response) {
                 _this.item = response.data;
             });
