@@ -6,6 +6,5 @@
     <div id="item-app">
     </div>
 
-
 </div>
 @endsection

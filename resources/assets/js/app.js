@@ -38,6 +38,7 @@ import App from './App.vue';
 import CreateItem from './components/CreateItem.vue';
 import ViewItems from './components/ViewItems.vue';
 import EditItem from './components/EditItem.vue';
+import AddSectionModal from './components/AddSectionModal.vue';
 
 const routes = [
     {
@@ -54,6 +55,11 @@ const routes = [
         name: 'EditItem',
         path: '/edit/:id',
         component: EditItem
+    },
+    {
+        name: 'AddSectionModal',
+        path: '/add-section-modal',
+        component: AddSectionModal
     }
 ];
 
