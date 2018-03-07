@@ -18,29 +18,37 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <td>ID</td>
                                 <td>Item Name</td>
-                                <td>Item Price</td>
                                 <td>Actions</td>
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr v-for="item in items">
-                                <td>{{ item.id }}</td>
                                 <td>{{ item.name }}</td>
-                                <td>{{ item.price }}</td>
                                 <td>
                                     <router-link :to="{name: 'EditItem', params: { id: item.id }}"
                                                  class="btn btn-primary">Edit
                                     </router-link>
-                                </td>
-                                <td>
                                     <button class="btn btn-danger" v-on:click="deleteItem(item.id)">Delete</button>
                                 </td>
                             </tr>
+
+                            <tr v-for="(row, index) in rows">
+                                <td><input type="text" class="form-control" v-model="row.name"></td>
+                                <td>
+                                    <a v-on:click="saveElement(index);" style="cursor: pointer">Save</a> |
+                                    <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
+                                </td>
+                            </tr>
+
+
                             </tbody>
                         </table>
+
+                        <div>
+                            <button class="button btn-primary" @click="addRow">Add Item</button>
+                        </div>
 
                     </div>
                 </div>
@@ -55,8 +63,10 @@
     export default {
         data() {
             return {
-                items: []
-            }
+                items: [],
+                rows: []
+            };
+
         },
 
         created: function () {
@@ -74,7 +84,29 @@
                 let uri = `http://localhost:8080/items/${id}`;
                 this.items.splice(id, 1);
                 this.axios.delete(uri);
-            }
+                this.fetchItems();
+            },
+
+            addRow: function() {
+                var elem = document.createElement('tr');
+                this.rows.push({
+                    name: "",
+                });
+            },
+
+            saveElement: function (index) {
+                let element = this.rows.pop(index);
+                let uri = 'http://localhost:8080/items';
+                this.axios.post(uri, element).then((response) => {
+                    this.$router.push({name: 'DisplayItem'})
+                });
+
+                this.fetchItems();
+            },
+
+            removeElement: function(index) {
+                this.rows.splice(index, 1);
+            },
         }
     }
 </script>

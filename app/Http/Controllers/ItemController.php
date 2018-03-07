@@ -36,6 +36,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+
         $item = new Item([
             'name' => $request->get('name'),
             'price' => $request->get('price')
