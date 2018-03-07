@@ -4,6 +4,9 @@
     <div class="container">
 
         @auth
+        <div class="col-md-12">
+            <img src="http://placehold.it/1000x200" class="img-responsive" style="width: 100%" alt="Placeholder">
+        </div>
             <div id="item-app">
             </div>
         @else

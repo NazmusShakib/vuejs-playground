@@ -13965,7 +13965,7 @@ module.exports = Cancel;
         addItem: function addItem() {
             var _this = this;
 
-            var uri = 'http://localhost:8080/items';
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items';
             this.axios.post(uri, this.item).then(function (response) {
                 _this.$router.push({ name: 'DisplayItem' });
             });
@@ -13978,6 +13978,17 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14062,23 +14073,23 @@ module.exports = Cancel;
         fetchItems: function fetchItems() {
             var _this = this;
 
-            var uri = 'http://localhost:8080/items';
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items';
             this.axios.get(uri).then(function (response) {
                 _this.items = response.data;
             });
         },
         deleteItem: function deleteItem(id) {
-            var uri = 'http://localhost:8080/items/' + id;
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items/' + id;
             this.items.splice(id, 1);
             this.axios.delete(uri);
             this.fetchItems();
         },
 
-
         addRow: function addRow() {
             var elem = document.createElement('tr');
             this.rows.push({
-                name: ""
+                name: "",
+                description: ""
             });
         },
 
@@ -14087,13 +14098,12 @@ module.exports = Cancel;
 
             //let element = this.rows.pop(index);
             var element = this.rows[index];
-            var uri = 'http://localhost:8080/items';
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items';
             this.axios.post(uri, element).then(function (response) {
                 _this2.$router.push({ name: 'DisplayItem' });
             });
 
             this.rows.splice(index, 1);
-
             this.fetchItems();
         },
 
@@ -14152,7 +14162,7 @@ module.exports = Cancel;
         getItem: function getItem() {
             var _this = this;
 
-            var uri = 'http://localhost:8080/items/' + this.$route.params.id + '/edit';
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items/' + this.$route.params.id + '/edit';
 
             console.log(uri);
 
@@ -14163,7 +14173,7 @@ module.exports = Cancel;
         updateItem: function updateItem() {
             var _this2 = this;
 
-            var uri = 'http://localhost:8080/items/' + this.$route.params.id;
+            var uri = 'http://dbox.fraxinusaccountants.co.uk/items/' + this.$route.params.id;
             this.axios.patch(uri, this.item).then(function (response) {
                 _this2.$router.push({ name: 'DisplayItem' });
             });
@@ -50717,169 +50727,192 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("table", { staticClass: "table table-hover" }, [
-            _vm._m(1),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c(
+          "div",
+          { staticClass: "col-md-12" },
+          [
+            _c("p", [
+              _vm._v(
+                " Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n                when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                It has survived not only five centuries, but also the leap into electronic typesetting,\n                remaining essentially unchanged. It was popularised in the 1960s with the release of\n                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing\n                software like Aldus PageMaker including versions of Lorem Ipsum.\n            "
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "tbody",
-              [
-                _vm._l(_vm.items, function(item) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(item.name))]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "btn btn-primary btn-sm",
-                            attrs: {
-                              to: { name: "EditItem", params: { id: item.id } }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil-square-o",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger btn-sm",
-                            on: {
-                              click: function($event) {
-                                _vm.deleteItem(item.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-trash-o",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.rows, function(row, index) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: row.name,
-                            expression: "row.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: { value: row.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(row, "name", $event.target.value)
-                          }
-                        }
-                      })
+            _vm.rows.length < 1
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary form-control",
+                      staticStyle: { margin: "10px 0px 10px 0px" },
+                      on: { click: _vm.addRow }
+                    },
+                    [_vm._v("\n                    Add New\n                ")]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.rows, function(row, index) {
+              return _c(
+                "div",
+                {
+                  staticStyle: { "background-color": "#fff", padding: "10px" }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Title:")
                     ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
+                    _c("input", {
+                      directives: [
                         {
-                          staticStyle: { cursor: "pointer", color: "blue" },
-                          on: {
-                            click: function($event) {
-                              _vm.saveElement(index)
-                            }
+                          name: "model",
+                          rawName: "v-model",
+                          value: row.title,
+                          expression: "row.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "title", name: "title" },
+                      domProps: { value: row.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-floppy-o fa-lg",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" |\n                            "),
-                      _c(
-                        "a",
+                          _vm.$set(row, "title", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "description" } }, [
+                      _vm._v("Description:")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
                         {
-                          staticStyle: { cursor: "pointer", color: "red" },
-                          on: {
-                            click: function($event) {
-                              _vm.removeElement(index)
-                            }
+                          name: "model",
+                          rawName: "v-model",
+                          value: row.description,
+                          expression: "row.description"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "description", cols: "20", rows: "5" },
+                      domProps: { value: row.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-minus-circle fa-lg",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
-                      )
-                    ])
+                          _vm.$set(row, "description", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: {
+                        click: function($event) {
+                          _vm.saveElement(index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-floppy-o fa-lg",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" Save\n                ")
+                    ]
+                  ),
+                  _vm._v("\n                |\n                "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          _vm.removeElement(index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-minus-circle fa-lg",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" Remove\n                ")
+                    ]
+                  )
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" }),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm._l(_vm.items, function(item) {
+          return _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-10" }, [
+                    _c("h5", [_vm._v(_vm._s(item.title))]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "pull-right",
+                        staticStyle: { color: "red", cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteItem(item.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-trash-o",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
                   ])
-                })
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "button",
-              { staticClass: "button btn-primary", on: { click: _vm.addRow } },
-              [_vm._v("Add New")]
-            )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n\n                    " +
+                    _vm._s(item.description) +
+                    "\n\n                "
+                )
+              ])
+            ])
           ])
-        ])
-      ])
-    ])
+        })
+      ],
+      2
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-10" }, [_c("h2", [_vm._v("Items")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", [_vm._v("Item Name")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Actions")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {

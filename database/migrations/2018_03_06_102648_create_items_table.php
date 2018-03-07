@@ -15,8 +15,8 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('price')->nullable();
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

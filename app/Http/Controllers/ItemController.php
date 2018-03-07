@@ -38,10 +38,16 @@ class ItemController extends Controller
     {
         // dd($request->all());
 
+        /*$request->validate([
+            'title' => 'required|min:3|max:20'
+        ]);*/
+
+
         $item = new Item([
-            'name' => $request->get('name'),
-            'price' => $request->get('price')
+            'title' => $request->get('title'),
+            'description' => $request->get('description')
         ]);
+
         $item->save();
         return response()->json('Successfully added');
     }
@@ -80,7 +86,7 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         $item->name = $request->get('name');
-        $item->price = $request->get('price');
+        $item->description = $request->get('description');
         $item->save();
 
         return response()->json('Successfully Updated');
