@@ -19,7 +19,12 @@ class UsersTableSeeder extends Seeder
 
         $section1 = \App\Section::create([
             'name' => 'First Section',
-            'description' => 'description from seeder.',
+            'description' => '1 description from seeder.',
+        ]);
+
+        $section2 = \App\Section::create([
+            'name' => 'Second Section',
+            'description' => 'Second description from seeder.',
         ]);
 
         \App\Task::create([
@@ -32,6 +37,12 @@ class UsersTableSeeder extends Seeder
             'section_id' => $section1->id,
             'task_name' => '22 First Section first task',
             'task_desc' => '22 Fstsk description from seeder.',
+        ]);
+
+        \App\Task::create([
+            'section_id' => $section2->id,
+            'task_name' => '22 Second Section first task',
+            'task_desc' => '22 Second description from seeder.',
         ]);
     }
 }
