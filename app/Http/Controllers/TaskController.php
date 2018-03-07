@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
+use App\Task;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Task::with('section')->get();
         return response()->json($items);
     }
 
@@ -38,7 +38,7 @@ class ItemController extends Controller
     {
         // dd($request->all());
 
-        $item = new Item([
+        $item = new Task([
             'name' => $request->get('name'),
             'price' => $request->get('price')
         ]);
@@ -65,7 +65,7 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        $item = Item::find($id);
+        $item = Task::find($id);
         return response()->json($item);
     }
 
@@ -78,7 +78,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $item = Item::find($id);
+        $item = Task::find($id);
         $item->name = $request->get('name');
         $item->price = $request->get('price');
         $item->save();
@@ -94,7 +94,7 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $item = Item::find($id);
+        $item = Task::find($id);
         $item->delete();
 
         return response()->json('Successfully Deleted');
