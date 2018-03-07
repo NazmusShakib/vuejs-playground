@@ -48,7 +48,7 @@ const routes = [
     },
     {
         name: 'DisplayItem',
-        path: '/home',
+        path: '/',
         component: ViewItems
     },
     {

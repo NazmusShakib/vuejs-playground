@@ -14244,7 +14244,7 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_5__components_CreateItem_vue__["a" /* default */]
 }, {
     name: 'DisplayItem',
-    path: '/home',
+    path: '/',
     component: __WEBPACK_IMPORTED_MODULE_6__components_ViewItems_vue__["a" /* default */]
 }, {
     name: 'EditItem',
