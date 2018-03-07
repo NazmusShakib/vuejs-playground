@@ -5,9 +5,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-/*require('./bootstrap');
+require('./bootstrap');
 
-window.Vue = require('vue');*/
+// window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,6 +16,7 @@ window.Vue = require('vue');*/
  */
 
 /*
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
@@ -35,7 +36,7 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue';
 import CreateItem from './components/CreateItem.vue';
-import DisplayItem from './components/DisplayItem.vue';
+import ViewItems from './components/ViewItems.vue';
 import EditItem from './components/EditItem.vue';
 
 const routes = [
@@ -46,8 +47,8 @@ const routes = [
     },
     {
         name: 'DisplayItem',
-        path: '/',
-        component: DisplayItem
+        path: '/home',
+        component: ViewItems
     },
     {
         name: 'EditItem',
@@ -57,4 +58,5 @@ const routes = [
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes});
-new Vue(Vue.util.extend({ router }, App)).$mount('#app');
+new Vue(Vue.util.extend({ router }, App)).$mount('#item-app');
+
