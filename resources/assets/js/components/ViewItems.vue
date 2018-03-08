@@ -122,13 +122,14 @@
                 var elem = document.createElement('tr');
                 this.rows.push({
                     name: "",
+                    section_id: ""
                 });
             },
 
             saveElement: function (index) {
                 //let element = this.rows.pop(index);
                 let element = this.rows[index];
-                let uri = 'http://localhost:8080/sections';
+                let uri = 'http://localhost:8080/tasks';
                 this.axios.post(uri, element).then((response) => {
                     this.$router.push({name: 'DisplayItem'})
                 });

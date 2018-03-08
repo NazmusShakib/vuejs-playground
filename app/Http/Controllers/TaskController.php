@@ -36,14 +36,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         $item = new Task([
-            'name' => $request->get('name'),
-            'price' => $request->get('price')
+            'task_name' => $request->get('task_name'),
+            'task_desc' => $request->get('task_desc')
         ]);
         $item->save();
-        return response()->json('Successfully added');
+        return response()->json('Successfully added.');
     }
 
     /**
@@ -79,8 +79,8 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $item = Task::find($id);
-        $item->name = $request->get('name');
-        $item->price = $request->get('price');
+        $item->task_name = $request->get('task_name');
+        $item->task_desc = $request->get('task_desc');
         $item->save();
 
         return response()->json('Successfully Updated');
