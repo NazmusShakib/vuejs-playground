@@ -34,6 +34,12 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue);
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import App from './App.vue';
 import CreateItem from './components/CreateItem.vue';
 import ViewItems from './components/ViewItems.vue';

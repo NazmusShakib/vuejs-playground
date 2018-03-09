@@ -4,14 +4,6 @@
         <div class="row">
 
             <div class="col-md-12">
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of
-                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                    software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
                 <div v-if="rows.length < 1">
                     <button class="btn btn-primary form-control" @click="addRow" style="margin: 10px 0px 10px 0px;">
                         Add New
@@ -43,7 +35,8 @@
             </div>
             <div class="clearfix"></div>
             <br><br>
-            <div class="col-md-6" v-for="item in items">
+
+            <div class="col-sm-6 col-md-4" v-for="item in items">
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
@@ -54,10 +47,6 @@
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            <!--<div class="pull-right">
-                                <router-link :to="{ name: 'CreateItem' }" class="btn btn-primary">Create Item
-                                </router-link>
-                            </div>-->
                         </div>
                     </div>
 
@@ -67,6 +56,7 @@
 
                     </div>
                 </div>
+
 
             </div>
         </div>

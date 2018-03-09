@@ -24,6 +24,6 @@
         "vue-template-compiler": "^2.5.13"
     },
     "dependencies": {
-        "bootstrap-vue": "^2.0.0-rc.1"
+        "bootstrap-vue": "^2.0.0-rc.2"
     }
 }
