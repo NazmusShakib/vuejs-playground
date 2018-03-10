@@ -26,19 +26,24 @@ const app = new Vue({
 
 
 import Vue from 'vue';
-
 import VueRouter from 'vue-router';
+
+import App from './App.vue';
+import { routes } from './route';
+
 Vue.use(VueRouter);
 
+
+ /*
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
 
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios);*/
 
-import App from './App.vue';
+/*import Nav from './components/layout/NavComponent.vue';
 import CreateItem from './components/CreateItem.vue';
 import ViewItems from './components/ViewItems.vue';
 import EditItem from './components/EditItem.vue';
@@ -46,14 +51,14 @@ import AddSectionModal from './components/AddSectionModal.vue';
 
 const routes = [
     {
-        name: 'CreateItem',
-        path: '/items/create',
-        component: CreateItem
-    },
-    {
         name: 'DisplayItem',
         path: '/',
         component: ViewItems
+    },
+    {
+        name: 'CreateItem',
+        path: '/items/create',
+        component: CreateItem
     },
     {
         name: 'EditItem',
@@ -65,8 +70,17 @@ const routes = [
         path: '/add-section-modal',
         component: AddSectionModal
     }
-];
+];*/
+/*new Vue(Vue.util.extend({ router }, App)).$mount('#app');*/
 
-const router = new VueRouter({ mode: 'history', routes: routes});
-new Vue(Vue.util.extend({ router }, App)).$mount('#item-app');
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes
+});
+
+new Vue({
+    el: '#app',
+    router,
+    render: h => h(App)
+});
 
