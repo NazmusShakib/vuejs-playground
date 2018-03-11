@@ -1,20 +1,19 @@
 <template>
-    <div class="container">
-
+    <div>
         <appNavBar></appNavBar>
 
-        <div>
-            <transition name="fade">
-                <router-view></router-view>
-            </transition>
-        </div>
+        <div class="container">
 
+                <router-view></router-view>
+
+        </div>
     </div>
 </template>
 
 <script>
     import NavBar from './components/layout/NavComponent.vue';
-    export default{
+
+    export default {
         components: {
             appNavBar: NavBar
         }

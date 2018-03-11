@@ -14,8 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('tasks', 'TaskController');
-Route::resource('sections', 'SectionController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::any('{all}', function () {
+    return view('layouts/app');
+})
+    ->where(['all' => '.*']);

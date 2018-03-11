@@ -34,43 +34,18 @@ import { routes } from './route';
 Vue.use(VueRouter);
 
 
+Vue.prototype.$apiUrl = 'http://localhost:8080/api/';
+
+
  /*
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
-
+*/
 
 import VueAxios from 'vue-axios';
-import axios from 'axios';
-Vue.use(VueAxios, axios);*/
+Vue.use(VueAxios, axios);
+//import axios from 'axios';
 
-/*import Nav from './components/layout/NavComponent.vue';
-import CreateItem from './components/CreateItem.vue';
-import ViewItems from './components/ViewItems.vue';
-import EditItem from './components/EditItem.vue';
-import AddSectionModal from './components/AddSectionModal.vue';
-
-const routes = [
-    {
-        name: 'DisplayItem',
-        path: '/',
-        component: ViewItems
-    },
-    {
-        name: 'CreateItem',
-        path: '/items/create',
-        component: CreateItem
-    },
-    {
-        name: 'EditItem',
-        path: '/edit/:id',
-        component: EditItem
-    },
-    {
-        name: 'AddSectionModal',
-        path: '/add-section-modal',
-        component: AddSectionModal
-    }
-];*/
 /*new Vue(Vue.util.extend({ router }, App)).$mount('#app');*/
 
 const router = new VueRouter({
