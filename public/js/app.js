@@ -14303,6 +14303,27 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14331,9 +14352,8 @@ module.exports = Cancel;
         }
     },
     components: {
-        appTasks: __WEBPACK_IMPORTED_MODULE_0__Tasks_vue__["a" /* default */]
+        tasks: __WEBPACK_IMPORTED_MODULE_0__Tasks_vue__["a" /* default */]
     }
-
 });
 
 /***/ }),
@@ -14341,20 +14361,6 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -51152,154 +51158,126 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "card-body" }, [
-      _c("table", { staticClass: "table table-hover" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          [
-            _vm._l(_vm.tasks, function(task) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(task.task_name))]),
+  return _c(
+    "div",
+    _vm._l(_vm.tasks, function(task) {
+      return _c(
+        "div",
+        [
+          _c("tr", [
+            _c("td", [_vm._v(_vm._s(task.task_name))]),
+            _vm._v(" "),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary btn-sm",
+                    attrs: { to: { name: "EditItem", params: { id: task.id } } }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-pencil-square-o",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-primary btn-sm",
-                        attrs: {
-                          to: { name: "EditItem", params: { id: task.id } }
-                        }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-pencil-square-o",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn-sm",
-                        on: {
-                          click: function($event) {
-                            _vm.deleteTask(task.id)
-                          }
-                        }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-trash-o",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.rows, function(row, index) {
-              return _c("tr", [
-                _c("td", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: row.name,
-                        expression: "row.name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text" },
-                    domProps: { value: row.name },
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-sm",
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(row, "name", $event.target.value)
+                      click: function($event) {
+                        _vm.deleteTask(task.id)
                       }
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-trash-o",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.rows, function(row, index) {
+            return _c("tr", [
+              _c("td", [
+                _c("input", {
+                  directives: [
                     {
-                      staticStyle: { cursor: "pointer", color: "blue" },
-                      on: {
-                        click: function($event) {
-                          _vm.saveElement(index)
-                        }
+                      name: "model",
+                      rawName: "v-model",
+                      value: row.name,
+                      expression: "row.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: row.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-floppy-o fa-lg",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  ),
-                  _vm._v(" |\n                    "),
-                  _c(
-                    "a",
-                    {
-                      staticStyle: { cursor: "pointer", color: "red" },
-                      on: {
-                        click: function($event) {
-                          _vm.removeElement(index)
-                        }
+                      _vm.$set(row, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticStyle: { cursor: "pointer", color: "blue" },
+                    on: {
+                      click: function($event) {
+                        _vm.saveElement(index)
                       }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-minus-circle fa-lg",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ])
+                    }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-floppy-o fa-lg",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                ),
+                _vm._v(" |\n                            "),
+                _c(
+                  "a",
+                  {
+                    staticStyle: { cursor: "pointer", color: "red" },
+                    on: {
+                      click: function($event) {
+                        _vm.removeElement(index)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-minus-circle fa-lg",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
               ])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          { staticClass: "button btn-primary", on: { click: _vm.addRow } },
-          [_vm._v("Add New")]
-        )
-      ])
-    ])
-  ])
+            ])
+          })
+        ],
+        2
+      )
+    })
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", [_vm._v("Task Name")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Actions")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {
@@ -51325,29 +51303,50 @@ var render = function() {
     { staticClass: "row" },
     _vm._l(_vm.sections, function(section) {
       return _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("div", { staticClass: "card-header" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-10" }, [
-                  _c("h3", [_vm._v(_vm._s(section.name))])
-                ])
-              ])
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("h3", [_vm._v(_vm._s(section.name))])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c("tbody", [_c("tasks", { attrs: { tasks: section.tasks } })], 1)
             ]),
             _vm._v(" "),
-            _vm._l(section.tasks, function(tasks) {
-              return _c("app-tasks", { attrs: { tasks: tasks } })
-            })
-          ],
-          2
-        )
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "button btn-primary",
+                  on: { click: _vm.addRow }
+                },
+                [_vm._v("Add New")]
+              )
+            ])
+          ])
+        ])
       ])
     })
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("Task Name")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Actions")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 if (false) {

@@ -5,11 +5,32 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-10"><h3>{{section.name}}</h3></div>
+                        <h3>{{section.name}}</h3>
                     </div>
                 </div>
 
-                <app-tasks v-for="tasks in section.tasks" :tasks="tasks"></app-tasks>
+                <div class="card-body">
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <td>Task Name</td>
+                            <td>Actions</td>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                <tasks :tasks="section.tasks"></tasks>
+
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <button class="button btn-primary" @click="addRow">Add New</button>
+                    </div>
+
+                </div>
 
             </div>
         </div>
@@ -43,8 +64,7 @@
             },
         },
         components: {
-            appTasks: Tasks
+            tasks: Tasks
         }
-
     }
 </script>
