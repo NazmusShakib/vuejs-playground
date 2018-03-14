@@ -34,7 +34,7 @@ import { routes } from './route';
 Vue.use(VueRouter);
 
 
-Vue.prototype.$apiUrl = 'http://localhost:8080/api/';
+Vue.prototype.$apiUrl = 'http://localhost:8000/api/';
 
 
  /*

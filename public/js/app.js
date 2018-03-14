@@ -14499,7 +14499,7 @@ const app = new Vue({
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$apiUrl = 'http://localhost:8080/api/';
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$apiUrl = 'http://localhost:8000/api/';
 
 /*
 import BootstrapVue from 'bootstrap-vue'
