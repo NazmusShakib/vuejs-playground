@@ -11,27 +11,9 @@
 
                 <div class="card-body">
 
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td>Task Name</td>
-                            <td>Actions</td>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-
-                <tasks :tasks="section.tasks"></tasks>
-
-                        </tbody>
-                    </table>
-
-                    <div>
-                        <button class="button btn-primary" @click="addRow">Add New</button>
-                    </div>
+                    <tasks :tasks="section.tasks"></tasks>
 
                 </div>
-
             </div>
         </div>
     </div>

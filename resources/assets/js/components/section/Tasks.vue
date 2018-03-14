@@ -1,37 +1,45 @@
 <template>
     <div>
 
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>Task Name</td>
+                <td>Actions</td>
+            </tr>
+            </thead>
 
-                    <div v-for="task in tasks">
-                        <tr>
-                            <td>{{ task.task_name }}</td>
-                            <td>
-                                <router-link :to="{name: 'EditItem', params: { id: task.id }}"
-                                             class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                                               aria-hidden="true"></i>
-                                </router-link>
-                                <button class="btn btn-danger btn-sm" v-on:click="deleteTask(task.id)">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </button>
-                            </td>
-                        </tr>
+            <tbody>
+            <tr v-for="task in tasks">
+                <td>{{ task.task_name }}</td>
+                <td>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 
-                        <tr v-for="(row, index) in rows">
-                            <td><input type="text" class="form-control" v-model="row.name"></td>
-                            <td>
-                                <a v-on:click="saveElement(index);" style="cursor: pointer; color: blue;">
-                                    <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>
-                                </a> |
-                                <a v-on:click="removeElement(index);" style="cursor: pointer; color: red;">
-                                    <i class="fa fa-minus-circle fa-lg" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </div>
+                    <button class="btn btn-danger btn-sm" v-on:click="deleteTask(task.id)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
 
+            <tr v-for="(row, index) in rows">
+                <td><input type="text" class="form-control" v-model="row.name"></td>
+                <td>
+                    <a v-on:click="saveElement(index);" style="cursor: pointer; color: blue;">
+                        <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>
+                    </a> |
+                    <a v-on:click="removeElement(index);" style="cursor: pointer; color: red;">
+                        <i class="fa fa-minus-circle fa-lg" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <button class="button btn-primary" @click="addRow">Add New</button>
+        </div>
 
     </div>
-
 </template>
 
 <script>

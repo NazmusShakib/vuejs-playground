@@ -14306,24 +14306,6 @@ module.exports = Cancel;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -14361,6 +14343,14 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51158,31 +51148,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.tasks, function(task) {
-      return _c(
-        "div",
+  return _c("div", [
+    _c("table", { staticClass: "table table-hover" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
         [
-          _c("tr", [
-            _c("td", [_vm._v(_vm._s(task.task_name))]),
-            _vm._v(" "),
-            _c(
-              "td",
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-primary btn-sm",
-                    attrs: { to: { name: "EditItem", params: { id: task.id } } }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-pencil-square-o",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ]
-                ),
+          _vm._l(_vm.tasks, function(task) {
+            return _c("tr", [
+              _c("td", [_vm._v(_vm._s(task.task_name))]),
+              _vm._v(" "),
+              _c("td", [
+                _c("i", {
+                  staticClass: "fa fa-pencil-square-o",
+                  attrs: { "aria-hidden": "true" }
+                }),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -51201,10 +51182,9 @@ var render = function() {
                     })
                   ]
                 )
-              ],
-              1
-            )
-          ]),
+              ])
+            ])
+          }),
           _vm._v(" "),
           _vm._l(_vm.rows, function(row, index) {
             return _c("tr", [
@@ -51250,7 +51230,7 @@ var render = function() {
                     })
                   ]
                 ),
-                _vm._v(" |\n                            "),
+                _vm._v(" |\n                "),
                 _c(
                   "a",
                   {
@@ -51274,10 +51254,31 @@ var render = function() {
         ],
         2
       )
-    })
-  )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "button",
+        { staticClass: "button btn-primary", on: { click: _vm.addRow } },
+        [_vm._v("Add New")]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("Task Name")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Actions")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 if (false) {
@@ -51310,43 +51311,18 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("table", { staticClass: "table table-hover" }, [
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c("tbody", [_c("tasks", { attrs: { tasks: section.tasks } })], 1)
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "button btn-primary",
-                  on: { click: _vm.addRow }
-                },
-                [_vm._v("Add New")]
-              )
-            ])
-          ])
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [_c("tasks", { attrs: { tasks: section.tasks } })],
+            1
+          )
         ])
       ])
     })
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", [_vm._v("Task Name")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Actions")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {
