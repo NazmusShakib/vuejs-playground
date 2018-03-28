@@ -92,11 +92,9 @@
                 this.axios.post(uri, element)
                     .then((response) => {
                         console.log(response.data);
-                        this.$flash.success('User Created Successfully');
                     })
                     .catch(function (error) {
                         console.log(error.errors);
-                        this.$flash.success('User Created Successfully');
                     });
 
             }
@@ -104,6 +102,7 @@
 
         mounted() {
             console.log('Log from register component.');
+            // https://github.com/sagaryonjan/vue-flash
         }
 
     }

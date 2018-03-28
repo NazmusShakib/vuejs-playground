@@ -14505,23 +14505,21 @@ function applyToTag (styleElement, obj) {
 
     methods: {
         submitted: function submitted() {
-            var _this = this;
 
             var element = this.userData;
             var uri = this.$webUrl + 'register';
 
             this.axios.post(uri, element).then(function (response) {
                 console.log(response.data);
-                _this.$flash.success('User Created Successfully');
             }).catch(function (error) {
                 console.log(error.errors);
-                this.$flash.success('User Created Successfully');
             });
         }
     },
 
     mounted: function mounted() {
         console.log('Log from register component.');
+        // https://github.com/sagaryonjan/vue-flash
     }
 });
 
