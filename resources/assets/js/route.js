@@ -1,4 +1,5 @@
 import Login from './components/login/LoginComponent.vue';
+import Register from './components/login/registerComponent.vue';
 
 import Home from './components/HomeComponent.vue';
 import Portfolio from './components/portfolio/PortfolioComponent.vue';
@@ -12,6 +13,10 @@ export const routes = [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/register',
+        component: Register
     },
     {
         path: '/portfolio',
