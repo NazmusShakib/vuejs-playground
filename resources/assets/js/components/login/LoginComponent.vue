@@ -54,10 +54,10 @@
 
 </template>
 
-<!--<script>
+<script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            console.log('Login Component mounted.')
         }
     }
-</script>-->
+</script>

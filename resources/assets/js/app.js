@@ -1,4 +1,4 @@
-
+'use strict';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -27,23 +27,21 @@ const app = new Vue({
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueAxios from 'vue-axios';
 
 import App from './App.vue';
 import { routes } from './route';
 
 Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
 
 
 Vue.prototype.$apiUrl = 'http://localhost:8000/api/';
-
 
  /*
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
 */
-
-import VueAxios from 'vue-axios';
-Vue.use(VueAxios, axios);
 //import axios from 'axios';
 
 /*new Vue(Vue.util.extend({ router }, App)).$mount('#app');*/
@@ -58,4 +56,3 @@ new Vue({
     router,
     render: h => h(App)
 });
-
