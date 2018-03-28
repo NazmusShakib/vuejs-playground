@@ -4,7 +4,11 @@
 
         <br>
 
+
+
+
         <div class="container">
+
             <transition name="slide" mode="out-in">
 
                 <router-view></router-view>

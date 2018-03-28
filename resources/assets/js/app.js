@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('vue-flash-message/dist/vue-flash-message.min.css');
 
 // window.Vue = require('vue');
 
@@ -28,17 +29,27 @@ const app = new Vue({
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
+import VueFlash from 'vue2-flash';
+
+
+/*import VueResource from 'vue-resource';*/
 
 import App from './App.vue';
-import { routes } from './route';
+import {routes} from './route';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.use(VueFlash);
+
+/*Vue.use(VueResource);*/
+
+/*Vue.$http = 'https://vue-playground-30e97.firebaseio.com/';*/
 
 
 Vue.prototype.$apiUrl = 'http://localhost:8000/api/';
+Vue.prototype.$webUrl = 'http://localhost:8000/';
 
- /*
+/*
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
 */

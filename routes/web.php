@@ -20,6 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('test', function(\Illuminate\Http\Request $request) {
+
+    \Illuminate\Support\Facades\Auth::logout();
+
+});
+
+
+
+
 Route::any('{all}', function () {
     return view('layouts/app');
 })

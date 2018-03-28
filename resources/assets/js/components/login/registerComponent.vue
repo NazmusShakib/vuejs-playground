@@ -3,7 +3,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Register</div>
-
+                <flash-float></flash-float>
                 <div class="card-body">
 
                     <form>
@@ -71,30 +71,33 @@
 </template>
 
 <script>
-
     export default {
 
         data() {
-          return {
-              userData: {
-                  'name': '',
-                  'email': '',
-                  'password': '',
-                  'password_confirmation': ''
-              }
-          }
+            return {
+                userData: {
+                    'name': '',
+                    'email': '',
+                    'password': '',
+                    'password_confirmation': ''
+                }
+            }
         },
-        methods : {
+        methods: {
             submitted() {
 
-                let element = JSON.stringify(this.userData);
-                let uri = 'https://vue-playground-30e97.firebaseio.com/';
+                let element = this.userData;
+                let uri = this.$webUrl + 'register';
 
-                this.axios.put(uri, element).then((response) => {
-
-                    console.log('Response');
-                });
-
+                this.axios.post(uri, element)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.$flash.success('User Created Successfully');
+                    })
+                    .catch(function (error) {
+                        console.log(error.errors);
+                        this.$flash.success('User Created Successfully');
+                    });
 
             }
         },
