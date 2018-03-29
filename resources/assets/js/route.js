@@ -12,10 +12,12 @@ export const routes = [
     },
     {
         path: '/login',
+        name: 'login',
         component: Login
     },
     {
         path: '/register',
+        name: 'register',
         component: Register
     },
     {

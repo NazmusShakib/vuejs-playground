@@ -3,7 +3,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Register</div>
-                <flash-float></flash-float>
                 <div class="card-body">
 
                     <form>
@@ -16,7 +15,13 @@
                                        type="text"
                                        class="form-control"
                                        v-model="userData.name"
+                                       name="name"
+                                       v-validate="'required|alpha_spaces'"
                                        autofocus>
+                                    <i v-show="errors.has('name')" class="fa fa-warning"></i>
+                                    <span v-show="errors.has('name')" class="text-danger help is-danger">
+                                           {{ errors.first('name') }}
+                                    </span>
 
                             </div>
                         </div>
@@ -27,8 +32,15 @@
                             <div class="col-md-6">
                                 <input id="email"
                                        type="email"
+                                       v-validate="'required|email'"
+                                       name="email"
+                                       :class="{'input': true, 'is-danger': errors.has('email') }"
                                        class="form-control"
                                        v-model="userData.email">
+                                    <i v-show="errors.has('email')" class="fa fa-warning"></i>
+                                    <span v-show="errors.has('email')" class="text-danger help is-danger">
+                                       {{ errors.first('email') }}
+                                   </span>
                             </div>
                         </div>
 
@@ -57,7 +69,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" @click.prevent="submitted">
+                                <button type="submit"
+                                class="btn btn-primary"
+                                @click.prevent="submitted"
+                                :disabled="errors.any()">
                                     Register
                                 </button>
                             </div>
@@ -85,24 +100,27 @@
         },
         methods: {
             submitted() {
-
                 let element = this.userData;
                 let uri = this.$webUrl + 'register';
 
-                this.axios.post(uri, element)
-                    .then((response) => {
-                        console.log(response.data);
-                    })
-                    .catch(function (error) {
-                        console.log(error.errors);
-                    });
 
+                this.$validator.validateAll().then(isValid => {
+                    if (isValid) {
+                        this.axios.post(uri, element)
+                            .then((response) => {
+                                this.$notify({ message: response.data, type: 'success'})
+                                this.$router.push({ name: 'login' });
+                            })
+                            .catch((error) => {
+                                this.$notify({ message: error.response.data.message, type: 'danger'})
+                            });
+                    }
+                });
             }
         },
 
         mounted() {
             console.log('Log from register component.');
-            // https://github.com/sagaryonjan/vue-flash
         }
 
     }

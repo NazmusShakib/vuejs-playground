@@ -1,11 +1,10 @@
 <template>
     <div>
+        <notifications></notifications>
+        
         <appNavBar></appNavBar>
 
         <br>
-
-
-
 
         <div class="container">
 
