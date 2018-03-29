@@ -14612,11 +14612,10 @@ function applyToTag (styleElement, obj) {
     },
 
     methods: {
-        deleteTask: function deleteTask(id) {
+        deleteTask: function deleteTask(index, id) {
             var uri = this.$apiUrl + ('tasks/' + id);
-            this.tasks.splice(id, 1);
             this.axios.delete(uri);
-            this.fetchSections();
+            this.tasks.splice(index, 1);
         },
 
 
@@ -58378,7 +58377,7 @@ var staticRenderFns = [
                     { staticClass: "btn btn-link", attrs: { href: "#" } },
                     [
                       _vm._v(
-                        "\n                                Forgot Your Password?%\n                            "
+                        "\n                                Forgot Your Password!\n                            "
                       )
                     ]
                   )
@@ -59036,7 +59035,7 @@ var render = function() {
       _c(
         "tbody",
         [
-          _vm._l(_vm.tasks, function(task) {
+          _vm._l(_vm.tasks, function(task, index) {
             return _c("tr", [
               _c("td", [_vm._v(_vm._s(task.task_name))]),
               _vm._v(" "),
@@ -59052,7 +59051,7 @@ var render = function() {
                     staticClass: "btn btn-danger btn-sm",
                     on: {
                       click: function($event) {
-                        _vm.deleteTask(task.id)
+                        _vm.deleteTask(index, task.id)
                       }
                     }
                   },

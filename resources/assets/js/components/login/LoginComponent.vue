@@ -41,7 +41,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="#">
-                                    Forgot Your Password?%
+                                    Forgot Your Password!
                                 </a>
                             </div>
                         </div>

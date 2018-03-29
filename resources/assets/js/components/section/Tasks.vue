@@ -10,12 +10,12 @@
             </thead>
 
             <tbody>
-            <tr v-for="task in tasks">
+            <tr v-for="(task, index) in tasks">
                 <td>{{ task.task_name }}</td>
                 <td>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 
-                    <button class="btn btn-danger btn-sm" v-on:click="deleteTask(task.id)">
+                    <button class="btn btn-danger btn-sm" v-on:click="deleteTask(index, task.id)">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                 </td>
@@ -53,11 +53,10 @@
         },
         methods: {
 
-            deleteTask(id) {
+            deleteTask(index, id) {
                 let uri = this.$apiUrl + `tasks/${id}`;
-                this.tasks.splice(id, 1);
                 this.axios.delete(uri);
-                this.fetchSections();
+                this.tasks.splice(index, 1);
             },
 
             saveElement: function (index) {
