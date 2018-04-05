@@ -11,7 +11,7 @@
 
                 <div class="card-body">
 
-                    <tasks :tasks="section.tasks"></tasks>
+                    <tasks :tasks="section.tasks" :sectionID="section.id"></tasks>
 
                 </div>
             </div>
@@ -29,7 +29,8 @@
         data() {
             return {
                 sections: [],
-                tasks: []
+                tasks: [],
+                sectionID: ''
             };
         },
 

@@ -36,14 +36,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-
         $item = new Task([
-            'task_name' => $request->get('task_name'),
-            'task_desc' => $request->get('task_desc')
+            'section_id' => $request->sectionID,
+            'task_name' => $request->name,
+            'task_desc' => $request->task_desc
         ]);
         $item->save();
-        return response()->json('Successfully added.');
+        return response()->json('Task created Successfully.');
     }
 
     /**

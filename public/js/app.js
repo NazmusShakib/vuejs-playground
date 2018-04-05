@@ -14528,7 +14528,8 @@ function applyToTag (styleElement, obj) {
     data: function data() {
         return {
             sections: [],
-            tasks: []
+            tasks: [],
+            sectionID: ''
         };
     },
 
@@ -14601,10 +14602,13 @@ function applyToTag (styleElement, obj) {
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    props: ['tasks'],
+    props: ['tasks', 'sectionID'],
     data: function data() {
         return {
             rows: []
@@ -14622,28 +14626,31 @@ function applyToTag (styleElement, obj) {
         saveElement: function saveElement(index) {
             var _this = this;
 
+            console.log(this.rows[index]);
+
             var element = this.rows[index];
             var uri = this.$apiUrl + 'tasks';
             this.axios.post(uri, element).then(function (response) {
-                _this.$router.push({ name: 'DisplayItem' });
+                _this.$router.push({ name: 'Sections' });
             });
 
             this.rows.splice(index, 1);
-
-            this.fetchItems();
         },
 
         addRow: function addRow(index) {
             var elem = document.createElement('tr');
             this.rows.push({
                 name: "",
-                section_id: ""
+                sectionID: this.sectionID
             });
         },
 
         removeElement: function removeElement(index) {
             this.rows.splice(index, 1);
         }
+    },
+    mounted: function mounted() {
+        console.log(this.tasks);
     }
 });
 
@@ -59089,6 +59096,28 @@ var render = function() {
                       _vm.$set(row, "name", $event.target.value)
                     }
                   }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: row.sectionID,
+                      expression: "row.sectionID"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "hidden" },
+                  domProps: { value: row.sectionID },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(row, "sectionID", $event.target.value)
+                    }
+                  }
                 })
               ]),
               _vm._v(" "),
@@ -59194,7 +59223,11 @@ var render = function() {
           _c(
             "div",
             { staticClass: "card-body" },
-            [_c("tasks", { attrs: { tasks: section.tasks } })],
+            [
+              _c("tasks", {
+                attrs: { tasks: section.tasks, sectionID: section.id }
+              })
+            ],
             1
           )
         ])

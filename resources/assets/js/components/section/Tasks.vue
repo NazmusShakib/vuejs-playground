@@ -22,7 +22,10 @@
             </tr>
 
             <tr v-for="(row, index) in rows">
-                <td><input type="text" class="form-control" v-model="row.name"></td>
+                <td>
+                    <input type="text" class="form-control" v-model="row.name">
+                    <input type="hidden" class="form-control" v-model="row.sectionID">
+                </td>
                 <td>
                     <a v-on:click="saveElement(index);" style="cursor: pointer; color: blue;">
                         <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>
@@ -45,7 +48,7 @@
 <script>
 
     export default {
-        props: ['tasks'],
+        props: ['tasks', 'sectionID'],
         data() {
             return {
                 rows: []
@@ -60,28 +63,34 @@
             },
 
             saveElement: function (index) {
+
+                console.log(this.rows[index]);
+
+
                 let element = this.rows[index];
                 let uri = this.$apiUrl + 'tasks';
                 this.axios.post(uri, element).then((response) => {
-                    this.$router.push({name: 'DisplayItem'})
+                    this.$router.push({ name: 'Sections' });
                 });
 
                 this.rows.splice(index, 1);
 
-                this.fetchItems();
             },
 
             addRow: function (index) {
                 var elem = document.createElement('tr');
                 this.rows.push({
                     name: "",
-                    section_id: ""
+                    sectionID: this.sectionID
                 });
             },
 
             removeElement: function (index) {
                 this.rows.splice(index, 1);
             }
+        },
+        mounted() {
+            console.log(this.tasks);
         }
     }
 
