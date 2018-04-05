@@ -14550,6 +14550,9 @@ function applyToTag (styleElement, obj) {
     },
     components: {
         tasks: __WEBPACK_IMPORTED_MODULE_0__Tasks_vue__["a" /* default */]
+    },
+    mounted: function mounted() {
+        // console.log(this.newTask);
     }
 });
 
@@ -14608,7 +14611,15 @@ function applyToTag (styleElement, obj) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    props: ['tasks', 'sectionID'],
+    props: {
+        tasks: {
+            type: Array,
+            required: true
+        }, sectionID: {
+            type: [Number, String],
+            required: false
+        }
+    },
     data: function data() {
         return {
             rows: []
@@ -14626,15 +14637,13 @@ function applyToTag (styleElement, obj) {
         saveElement: function saveElement(index) {
             var _this = this;
 
-            console.log(this.rows[index]);
-
+            // console.log(this.rows[index]);
             var element = this.rows[index];
             var uri = this.$apiUrl + 'tasks';
             this.axios.post(uri, element).then(function (response) {
-                _this.$router.push({ name: 'Sections' });
+                _this.$parent.fetchSections();
+                _this.rows.splice(index, 1);
             });
-
-            this.rows.splice(index, 1);
         },
 
         addRow: function addRow(index) {
@@ -14650,7 +14659,7 @@ function applyToTag (styleElement, obj) {
         }
     },
     mounted: function mounted() {
-        console.log(this.tasks);
+        // console.log(this.tasks);
     }
 });
 

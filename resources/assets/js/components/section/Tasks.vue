@@ -48,7 +48,15 @@
 <script>
 
     export default {
-        props: ['tasks', 'sectionID'],
+        props: {
+            tasks: {
+                type: Array,
+                required: true,
+            }, sectionID: {
+                type: [Number, String],
+                required: false,
+            }
+        },
         data() {
             return {
                 rows: []
@@ -64,16 +72,13 @@
 
             saveElement: function (index) {
 
-                console.log(this.rows[index]);
-
-
+                // console.log(this.rows[index]);
                 let element = this.rows[index];
                 let uri = this.$apiUrl + 'tasks';
                 this.axios.post(uri, element).then((response) => {
-                    this.$router.push({ name: 'Sections' });
+                    this.$parent.fetchSections();
+                    this.rows.splice(index, 1);
                 });
-
-                this.rows.splice(index, 1);
 
             },
 
@@ -90,7 +95,7 @@
             }
         },
         mounted() {
-            console.log(this.tasks);
+            // console.log(this.tasks);
         }
     }
 
