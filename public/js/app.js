@@ -14617,21 +14617,28 @@ function applyToTag (styleElement, obj) {
 
     methods: {
         deleteTask: function deleteTask(index, id) {
+            var _this = this;
+
             var uri = this.$apiUrl + ('tasks/' + id);
-            this.axios.delete(uri);
-            this.tasks.splice(index, 1);
+            this.axios.delete(uri).then(function (response) {
+                _this.tasks.splice(index, 1);
+                _this.$notify({ message: response.data, type: 'success' });
+            });
         },
 
 
         saveElement: function saveElement(index) {
-            var _this = this;
+            var _this2 = this;
 
-            console.log(this.rows[index]);
+            // console.log(this.rows[index]);
+
 
             var element = this.rows[index];
             var uri = this.$apiUrl + 'tasks';
             this.axios.post(uri, element).then(function (response) {
-                _this.$router.push({ name: 'Sections' });
+
+                _this2.tasks.push(response.data.item);
+                _this2.$notify({ message: response.data.message, type: 'success' });
             });
 
             this.rows.splice(index, 1);
@@ -14650,7 +14657,7 @@ function applyToTag (styleElement, obj) {
         }
     },
     mounted: function mounted() {
-        console.log(this.tasks);
+        // console.log(this.tasks);
     }
 });
 
