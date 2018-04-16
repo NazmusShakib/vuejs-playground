@@ -12,7 +12,11 @@
                             <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" required autofocus>
+                                <input id="email"
+                                       type="email"
+                                       v-model="user.email"
+                                       class="form-control"
+                                       required autofocus>
                             </div>
                         </div>
 
@@ -20,7 +24,12 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password"
+                                       type="password"
+                                       v-model="user.password"
+                                       class="form-control"
+                                       name="password"
+                                       required>
                             </div>
                         </div>
 
@@ -56,6 +65,16 @@
 
 <script>
     export default {
+
+        data() {
+            return {
+                user: {
+                    email : '',
+                    password : ''
+                }
+            }
+        },
+
         mounted() {
             console.log('Login Component mounted.')
         }

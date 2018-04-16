@@ -52,6 +52,10 @@ Vue.use(BootstrapVue);
 
 /*new Vue(Vue.util.extend({ router }, App)).$mount('#app');*/
 
+import localStorage from '~/services/localStorage';
+Vue.prototype.$localStorage = localStorage;
+
+
 const router = new VueRouter({
     mode: 'history',
     routes: routes
