@@ -30,7 +30,7 @@
             return {
                 sections: [],
                 tasks: [],
-                sectionID: ''
+                sectionID: '',
             };
         },
 
@@ -47,7 +47,10 @@
             },
         },
         components: {
-            tasks: Tasks
+            tasks: Tasks,
+        },
+        mounted() {
+            // console.log(this.newTask);
         }
     }
 </script>

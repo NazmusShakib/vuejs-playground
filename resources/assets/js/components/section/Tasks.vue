@@ -48,7 +48,15 @@
 <script>
 
     export default {
-        props: ['tasks', 'sectionID'],
+        props: {
+            tasks: {
+                type: Array,
+                required: true,
+            }, sectionID: {
+                type: [Number, String],
+                required: false,
+            }
+        },
         data() {
             return {
                 rows: []
@@ -68,17 +76,13 @@
 
                 // console.log(this.rows[index]);
 
-
                 let element = this.rows[index];
                 let uri = this.$apiUrl + 'tasks';
                 this.axios.post(uri, element).then((response) => {
 
                     this.tasks.push(response.data.item);
-                    this.$notify({ message: response.data.message, type: 'success'})
-                });
-
-                this.rows.splice(index, 1);
-
+                    this.$notify({message: response.data.message, type: 'success'})
+                })
             },
 
             addRow: function (index) {
