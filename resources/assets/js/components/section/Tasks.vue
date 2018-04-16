@@ -79,8 +79,8 @@
                 let element = this.rows[index];
                 let uri = this.$apiUrl + 'tasks';
                 this.axios.post(uri, element).then((response) => {
-
                     this.tasks.push(response.data.item);
+                    this.rows.splice(index, 1);
                     this.$notify({message: response.data.message, type: 'success'})
                 })
             },
