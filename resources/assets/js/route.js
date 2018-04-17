@@ -22,10 +22,12 @@ export const routes = [
     },
     {
         path: '/portfolio',
+        name: 'portfolio',
         component: Portfolio
     },
     {
         path: '/sections',
+        name: 'sections',
         component: Sections
     }
 ];

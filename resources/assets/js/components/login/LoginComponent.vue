@@ -83,7 +83,7 @@
                             this.$localStorage.set(key, response.data[key]);
                         });
 
-                        this.$router.push({name: 'portfolio'});
+                        this.$router.push({name: 'sections'});
 
                     })
                     .catch((error) => {

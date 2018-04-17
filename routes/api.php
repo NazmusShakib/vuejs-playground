@@ -18,10 +18,6 @@ use Illuminate\Http\Request;
 });*/
 
 
-Route::resource('tasks', 'TaskController');
-Route::resource('sections', 'SectionController');
-
-
 Route::post('signup', 'AuthController@register');
 Route::post('login', 'AuthController@login');
 
@@ -33,3 +29,11 @@ Route::group(['prefix' => 'auth', 'middleware' => 'jwt.auth'], function () {
 });
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'AuthController@refresh');
+
+
+Route::group(['middleware' => 'jwt.auth'], function () {
+
+    Route::resource('tasks', 'TaskController');
+    Route::resource('sections', 'SectionController');
+
+});

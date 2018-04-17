@@ -66,7 +66,7 @@
 
             deleteTask(index, id) {
                 let uri = this.$apiUrl + `tasks/${id}`;
-                this.axios.delete(uri).then((response) => {
+                this.axios.delete(uri, {headers: { Authorization: "Bearer " + this.$localStorage.get('token') }}).then((response) => {
                     this.tasks.splice(index, 1);
                     this.$notify({ message: response.data, type: 'success'})
                 });
@@ -78,7 +78,7 @@
 
                 let element = this.rows[index];
                 let uri = this.$apiUrl + 'tasks';
-                this.axios.post(uri, element).then((response) => {
+                this.axios.post(uri, element, {headers: { Authorization: "Bearer " + this.$localStorage.get('token') }}).then((response) => {
                     // this.tasks.push(response.data.item);
                     this.$parent.fetchSections();
                     this.rows.splice(index, 1);

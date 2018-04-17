@@ -41,9 +41,13 @@
         methods: {
             fetchSections() {
                 let uri = this.$apiUrl + 'sections';
-                this.axios.get(uri).then((response) => {
+                this.axios.get(uri, {headers: { Authorization: "Bearer " + this.$localStorage.get('token') }})
+                    .then((response) => {
                     this.sections = response.data;
-                });
+                })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
         },
         components: {
