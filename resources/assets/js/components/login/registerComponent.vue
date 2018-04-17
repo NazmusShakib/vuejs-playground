@@ -101,18 +101,18 @@
         methods: {
             submitted() {
                 let element = this.userData;
-                let uri = this.$webUrl + 'register';
+                let uri = this.$apiUrl + 'signup';
 
 
                 this.$validator.validateAll().then(isValid => {
                     if (isValid) {
                         this.axios.post(uri, element)
                             .then((response) => {
-                                this.$notify({ message: response.data, type: 'success'})
+                                this.$notify({ message: 'User registered successfully.', type: 'success'})
                                 this.$router.push({ name: 'login' });
                             })
                             .catch((error) => {
-                                this.$notify({ message: error.response.data.message, type: 'danger'})
+                                this.$notify({ message: 'Failed to register.', type: 'danger'})
                             });
                     }
                 });

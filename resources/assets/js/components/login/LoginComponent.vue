@@ -6,7 +6,7 @@
                 <div class="card-header">Login</div>
 
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="javascript:void(0)">
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
@@ -45,7 +45,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" @click.prevent="login">
                                     Login
                                 </button>
 
@@ -69,14 +69,31 @@
         data() {
             return {
                 user: {
-                    email : '',
-                    password : ''
+                    email: '',
+                    password: ''
                 }
             }
         },
+        methods: {
+            login: function () {
+                axios.post(this.$apiUrl + 'login', this.user)
+                    .then((response) => {
+
+                        Object.keys(response.data).forEach((key) => {
+                            this.$localStorage.set(key, response.data[key]);
+                        });
+
+                        this.$router.push({name: 'portfolio'});
+
+                    })
+                    .catch((error) => {
+                        this.$notify({message: 'Failed to login.', type: 'danger'})
+                    })
+            },
+        },
 
         mounted() {
-            console.log('Login Component mounted.')
+            this.$localStorage.clear()
         }
     }
 </script>
