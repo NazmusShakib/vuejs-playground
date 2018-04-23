@@ -1,6 +1,6 @@
 <template>
     <div>
-        <notifications></notifications>
+        <vue-snotify></vue-snotify>
         
         <appNavBar></appNavBar>
 

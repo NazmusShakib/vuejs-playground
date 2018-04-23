@@ -28,16 +28,18 @@ const app = new Vue({
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
-import Notify from 'vue-notifyjs';
 import VeeValidate from 'vee-validate';
 
 import App from './App.vue';
 import {routes} from './route';
 
+import Snotify from 'vue-snotify';
+import "vue-snotify/styles/material.css";
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
-Vue.use(Notify); 
 Vue.use(VeeValidate);
+Vue.use(Snotify)
 /*Vue.$http = 'https://vue-playground-30e97.firebaseio.com/';*/
 
 

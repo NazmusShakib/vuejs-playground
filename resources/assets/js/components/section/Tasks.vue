@@ -68,7 +68,7 @@
                 let uri = this.$apiUrl + `tasks/${id}`;
                 this.axios.delete(uri, {headers: { Authorization: "Bearer " + this.$localStorage.get('token') }}).then((response) => {
                     this.tasks.splice(index, 1);
-                    this.$notify({ message: response.data, type: 'success'})
+                    this.$snotify.success(response.data);
                 });
             },
 
@@ -82,7 +82,7 @@
                     // this.tasks.push(response.data.item);
                     this.$parent.fetchSections();
                     this.rows.splice(index, 1);
-                    this.$notify({message: response.data.message, type: 'success'})
+                    this.$snotify.success(response.data.message);
                 })
             },
 
